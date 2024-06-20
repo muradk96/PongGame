@@ -78,13 +78,10 @@ def main():
         player2.positionY = positions[1]
         player2.rect_update()
 
-
-
         # n.set_ball_pos(make_pos((ball.positionX, ball.positionY, ball.velocityX, ball.velocityY)))
 
         if collision.ball_wall_collision(ball, window_height):
             ball.wall_collision()
-            ball.velocityY *= -1
 
         if collision.ball_player1_collision(ball, player1) or collision.ball_player2_collision(ball, player2):
             ball.player_collision()
@@ -99,8 +96,7 @@ def main():
             # ball.reset_position(window_width, window_height)
             ball.velocityX *= -1
 
-
-        positions = read_pos(n.send(make_pos((player1.positionX, player1.positionY, ball.positionX, ball.positionY, ball.velocityX, ball.velocityY))))
+        #positions = read_pos(n.send(make_pos((player1.positionX, player1.positionY, ball.positionX, ball.positionY, ball.velocityX, ball.velocityY))))
         ball.positionX = positions[2]
         ball.positionY = positions[3]
         ball.velocityX = positions[4]
@@ -109,15 +105,6 @@ def main():
         ball.move()
 
         # n.set_ball_pos(make_pos((ball.positionX, ball.positionY, ball.velocityX, ball.velocityY)))
-
-
-
-
-
-
-
-
-
 
         player1.move_player(window_height)
 
