@@ -16,7 +16,7 @@ class CollisionManager:
         return False
 
     def goal_player1_collision(self, ball):
-        if (ball.positionX + ball.radius) <= 0:
+        if (ball.positionX - ball.radius) <= 0:
             return True
         return False
 

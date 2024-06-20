@@ -33,7 +33,7 @@ def make_pos(tup):
         input = input + str(t) + ","
     return input[:-1]
 
-pos = [(10, 200), (980, 200)]
+pos = [(30, 200), (960, 200)]
 ball_pos = [500, 250, 3, 3]
 
 def threaded_client(conn, player):
@@ -48,15 +48,17 @@ def threaded_client(conn, player):
                 print("Disconnected")
                 break
             else:
+
                 if player == 1:
                     reply = (pos[0][0], pos[0][1], ball_pos[0], ball_pos[1], ball_pos[2], ball_pos[3])
+
                 else:
+                    ball_pos[0] = data[2]
+                    ball_pos[1] = data[3]
+                    ball_pos[2] = data[4]
+                    ball_pos[3] = data[5]
                     reply = (pos[1][0], pos[1][1], ball_pos[0], ball_pos[1], ball_pos[2], ball_pos[3])
 
-                ball_pos[0] = data[2]
-                ball_pos[1] = data[3]
-                ball_pos[2] = data[4]
-                ball_pos[3] = data[5]
 
 
                 print("Received: ", data)

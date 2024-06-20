@@ -63,22 +63,18 @@ def main():
 
     collision = CollisionManager()
 
-    # positions = read_pos(n.send(make_pos((player1.positionX, player1.positionY, ball.positionX, ball.positionY, ball.velocityX, ball.velocityY))))
-    #
-    # ball.positionX = positions[2]
-    # ball.positionY = positions[3]
-    # ball.velocityX = positions[4]
-    # ball.velocityY = positions[5]
-
     running = True
     while running:
-        clock.tick(60)
+        clock.tick(120)
         positions = read_pos(n.send(make_pos((player1.positionX, player1.positionY, ball.positionX, ball.positionY, ball.velocityX, ball.velocityY))))
         player2.positionX = positions[0]
         player2.positionY = positions[1]
         player2.rect_update()
 
-        # n.set_ball_pos(make_pos((ball.positionX, ball.positionY, ball.velocityX, ball.velocityY)))
+        ball.positionX = positions[2]
+        ball.positionY = positions[3]
+        ball.velocityX = positions[4]
+        ball.velocityY = positions[5]
 
         if collision.ball_wall_collision(ball, window_height):
             ball.wall_collision()
@@ -88,23 +84,15 @@ def main():
 
         if collision.goal_player1_collision(ball):
             score_player2.score_update()
-            # ball.reset_position(window_width, window_height)
+            #ball.reset_position(window_width, window_height)
             ball.velocityX *= -1
 
         if collision.goal_player2_collision(ball, window_width):
             score_player1.score_update()
-            # ball.reset_position(window_width, window_height)
+            #ball.reset_position(window_width, window_height)
             ball.velocityX *= -1
 
-        #positions = read_pos(n.send(make_pos((player1.positionX, player1.positionY, ball.positionX, ball.positionY, ball.velocityX, ball.velocityY))))
-        ball.positionX = positions[2]
-        ball.positionY = positions[3]
-        ball.velocityX = positions[4]
-        ball.velocityY = positions[5]
-
         ball.move()
-
-        # n.set_ball_pos(make_pos((ball.positionX, ball.positionY, ball.velocityX, ball.velocityY)))
 
         player1.move_player(window_height)
 
