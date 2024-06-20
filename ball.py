@@ -1,6 +1,5 @@
 import pygame
 
-
 class Ball:
     def __init__(self, position_x, position_y, radius, color):
         self.positionX = position_x
@@ -18,6 +17,7 @@ class Ball:
         self.center = (self.positionX, self.positionY)
 
     def move(self):
+
         self.positionX += self.velocityX
         self.positionY += self.velocityY
 
@@ -33,3 +33,7 @@ class Ball:
         self.positionX = window_width / 2
         self.positionY = window_height / 2
         self.velocityX *= -1
+
+        self.ball_update()
+
+

@@ -11,7 +11,6 @@ class CollisionManager:
         return False
 
     def ball_wall_collision(self, ball, window_height):
-
         if ball.positionY >= window_height - ball.radius or ball.positionY <= ball.radius:
             return True
         return False
